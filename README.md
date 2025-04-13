@@ -28,7 +28,7 @@ A Python-based system that allows school administrators to input data into an SQ
 ### TeacherSubjects
 | Column Name | Data Type    | Description                               |
 | ----------- | ------------ | ----------------------------------------- |
-| teacherId   | INTEGER      | References `Teachers(id)`                 |
+| teacherId   | TEXT         | References `Teachers(id)`                 |
 | subjectId   | INTEGER      | References `Subjects(id)`                 |
 
 ### SubjectClasses
@@ -36,6 +36,6 @@ A Python-based system that allows school administrators to input data into an SQ
 | ----------- | ------------ | ----------------------------------------- |
 | classId     | INTEGER      | References `Classes(id)`                  |
 | subjectId   | INTEGER      | References `Subjects(id)`                 |
-| teacherId   | INTEGER      | References `Teachers(id)`                 |
+| teacherId   | TEXT         | References `Teachers(id)`                 |
 | weekPeriods | INTEGER      | Periods for this subject in a week        |
 | dayPeriods  | INTEGER      | Maximum periods for this subject in a day |
