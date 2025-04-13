@@ -14,22 +14,26 @@ A Python-based system that allows school administrators to input data into an SQ
 
 ### Subjects
 | Column Name | Data Type    | Description                               |
+| ----------- | ------------ | ----------------------------------------- |
 | id          | INTEGER      | Unique subject identifier                 |
 | subjectName | TEXT         | Name of the subject                       |
 
 ### Classes
 | Column Name | Data Type    | Description                               |
+| ----------- | ------------ | ----------------------------------------- |
 | id          | INTEGER      | Unique identifier for the class           |
 | grade       | INTEGER      | Grade level (e.g. "5", "10")              |
 | section     | TEXT         | Section label (e.g. "A", "B")             |
 
 ### TeacherSubjects
 | Column Name | Data Type    | Description                               |
+| ----------- | ------------ | ----------------------------------------- |
 | teacherId   | INTEGER      | References `Teachers(id)`                 |
 | subjectId   | INTEGER      | References `Subjects(id)`                 |
 
 ### SubjectClasses
 | Column Name | Data Type    | Description                               |
+| ----------- | ------------ | ----------------------------------------- |
 | classId     | INTEGER      | References `Classes(id)`                  |
 | subjectId   | INTEGER      | References `Subjects(id)`                 |
 | teacherId   | INTEGER      | References `Teachers(id)`                 |
