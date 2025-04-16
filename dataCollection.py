@@ -23,12 +23,14 @@ cur.executescript('''
                   ''')
 
 #adding new School Structure as an object of class schoolStructure and in the database table
-if input('Type YES to fill School Structure: ').strip() == 'YES'.upper():
-    cur.execute('SELECT COUNT(*) FROM SchoolStructure')
-    if cur.fetchone()[0] > 0:
-        print('Error. SchoolStructure already exists.')
-    else:
-        print('Enter numDays, weekTotal')
-        numDays, weekTotal = map(int, input('E.g. 5, 40: ').split(','))
-        structure = schoolStructure(numDays, weekTotal)
-        cur.execute('INSERT INTO SchoolStructure (numDays, weekTotal, dayTotal) VALUES (?, ?, ?)', (structure.getNumDays(), structure.getWeekTotal(), structure.getNumDays()))
+cur.execute('SELECT COUNT(*) FROM SchoolStructure')
+if cur.fetchone()[0] > 0:
+    cur.execute('SELECT numDays, weekTotal FROM SchoolStructure')
+    numDays, weekTotal = cur.fetchone()
+    structure = schoolStructure(numDays, weekTotal)
+else:
+    print('Fill in School Structure:\nEnter numDays, weekTotal')
+    numDays, weekTotal = map(int, input('E.g. 5, 40: ').split(','))
+    structure = schoolStructure(numDays, weekTotal)
+    cur.execute('INSERT INTO SchoolStructure (numDays, weekTotal, dayTotal) VALUES (?, ?, ?)', (structure.getNumDays(), structure.getWeekTotal(), structure.getNumDays()))  
+conn.commit()
